@@ -1,0 +1,76 @@
+name: Publish LiaScript Courses
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export INC Flywheel course
+        id: export-flywheel
+        uses: LiaScript/LiaScript-Exporter@master
+        with:
+          input-file: 'inc-flywheel-getting-started_quizlet_simple.md'
+          format: 'web'
+          output-name: 'inc-flywheel'
+          web-zip: 'false'
+
+      - name: Export Basic Math Quiz course
+        id: export-mathquiz
+        uses: LiaScript/LiaScript-Exporter@master
+        with:
+          input-file: 'math-quiz.md'
+          format: 'web'
+          output-name: 'math-quiz'
+          web-zip: 'false'
+
+      - name: Assemble publish directory
+        run: |
+          set -e
+          mkdir -p public
+
+          copy_output () {
+            SRC="$1"
+            DEST="$2"
+            if [ -d "$SRC" ]; then
+              cp -r "$SRC" "$DEST"
+            else
+              mkdir -p "$DEST"
+              cp -r "$(dirname "$SRC")"/* "$DEST"/
+            fi
+          }
+
+          copy_output "${{ steps.export-flywheel.outputs.output-file }}" public/inc-flywheel
+          copy_output "${{ steps.export-mathquiz.outputs.output-file }}" public/math-quiz
+
+          {
+            echo '<!DOCTYPE html>'
+            echo '<html>'
+            echo '<head><meta charset="utf-8"><title>INC Courses</title></head>'
+            echo '<body>'
+            echo '<h1>Courses</h1>'
+            echo '<ul>'
+            echo '<li><a href="inc-flywheel/">INC Flywheel — Getting Started Training</a></li>'
+            echo '<li><a href="math-quiz/">Basic Math Quiz</a></li>'
+            echo '</ul>'
+            echo '</body>'
+            echo '</html>'
+          } > public/index.html
+
+          touch public/.nojekyll
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages

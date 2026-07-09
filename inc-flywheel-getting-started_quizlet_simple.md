@@ -11,7 +11,7 @@ comment:  A shortened interactive training course covering INC Flywheel
           with automatic scoring. Completion is confirmed by emailing
           results directly from the browser via EmailJS.
 
-logo:     https://www.colorado.edu/mri/sites/default/files/styles/large/public/page/INC_logo.png
+logo:     https://inc-documentation.readthedocs.io/en/dev/_static/INC_center.png
 
 script: https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js
 
@@ -474,7 +474,7 @@ window.quizEmailResults = function () {
 
 **Flywheel.io** is an imaging data management platform used to receive, curate, manage, and analyze neuroimaging data. INC hosts a **cloud deployment** of Flywheel.io: your imaging data and metadata are stored on **AWS cloud infrastructure (S3)**, while data analysis and computation run on **CU Boulder Research Computing's (CURC)** on-premise HPC clusters, **Blanca** and **Alpine**, backed by **PetaLibrary** storage.
 
-![Flywheel computing architecture at CU Boulder](https://inc-documentation.readthedocs.io/en/latest/_images/facilities_data_analysis.jpg)
+![Flywheel computing architecture at CU Boulder](https://inc-documentation.readthedocs.io/en/latest/_images/facilities_data_analysis.jpg)<!-- style="width: 70%" -->
 
 > **Note:** Before starting a new or existing study in Flywheel, you must set up a meeting with INC Staff to discuss your specific needs and obtain a copy of INC's **Memorandum of Use (MOU)**.
 
@@ -654,7 +654,7 @@ Once logged into Flywheel, you will see the **Projects page** — your primary h
 
 Flywheel uses **CILogon** to manage access — the same federated-login system used by most academic institutions. CU Boulder users log in with their **University of Colorado credentials** (IdentiKey); external collaborators can log in with an existing CILogon-connected account (e.g. from their home institution or ORCID), or request a CU Boulder Affiliate Account through their UCB collaborator.
 
-![Flywheel landing page](https://inc-documentation.readthedocs.io/en/latest/_images/logging_in_1.png)
+![Flywheel landing page](https://inc-documentation.readthedocs.io/en/latest/_images/logging_in_1.png)<!-- style="width: 70%" -->
 
 > **💡 Tip:** Having trouble logging in? Try changing browsers.
 
@@ -674,7 +674,7 @@ Group  →  Project  →  Subject  →  Session  →  Acquisition
 | **Session** | One visit/scan day for a participant. |
 | **Acquisition** | A single scanner sequence within a session. Holds files and metadata. |
 
-![Basic schematic describing Flywheel architecture](https://inc-documentation.readthedocs.io/en/latest/_images/flywheel_architecture.png)
+![Basic schematic describing Flywheel architecture](https://inc-documentation.readthedocs.io/en/latest/_images/flywheel_architecture.png)<!-- style="width: 70%" -->
 
 ### Navigating Projects
 
@@ -698,7 +698,7 @@ To switch to a subject-centric view, select the **Subjects icon** within the pro
 
 **Collections** let you curate and share a subset of sessions across projects — for example, a "Radiologist Review" collection — without duplicating data or granting broader access than intended. **Data Views** let you extract and export metadata (age, sex, acquisition info, and more) across a project for statistical analysis or reporting.
 
-![Flywheel collections panel](https://inc-documentation.readthedocs.io/en/latest/_images/collections_1.png)
+![Flywheel collections panel](https://inc-documentation.readthedocs.io/en/latest/_images/collections_1.png)<!-- style="width: 70%" -->
 
 ---
 
@@ -843,7 +843,7 @@ As a thank-you for participating in research, INC generates **"brain souvenir"**
 
 Electronic brain souvenirs are generated **automatically for all study participants** — no gear needs to be manually launched. Lab staff should access and download the souvenir from the **list of session analyses** for that participant's session.
 
-![Example electronic brain souvenir — sagittal MRI slice](https://inc-documentation.readthedocs.io/en/latest/_images/brain_souvenir_example.jpg)
+![Example electronic brain souvenir — sagittal MRI slice](https://inc-documentation.readthedocs.io/en/latest/_images/brain_souvenir_example.jpg)<!-- style="width: 70%" -->
 
 > **📤 Sharing with participants:** Flywheel does not email or share the souvenir on your behalf. Communicate with the participant **directly** about how you'll share their electronic souvenir with them — check with your IRB coordinator about appropriate sharing methods.
 
