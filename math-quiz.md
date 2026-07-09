@@ -232,10 +232,10 @@ window.mathQuizEmailResults = function () {
 What is 7 + 8?
 
 <div class="quiz-options" id="q1-options">
-  <label class="quiz-option"><input type="radio" name="q1"> 14</label>
-  <label class="quiz-option"><input type="radio" name="q1" data-correct="true"> 15</label>
-  <label class="quiz-option"><input type="radio" name="q1"> 16</label>
-  <label class="quiz-option"><input type="radio" name="q1"> 22</label>
+  <label class="quiz-option"><input type="radio" name="q1"> 14</label><br>
+  <label class="quiz-option"><input type="radio" name="q1" data-correct="true"> 15</label><br>
+  <label class="quiz-option"><input type="radio" name="q1"> 16</label><br>
+  <label class="quiz-option"><input type="radio" name="q1"> 22</label><br>
   <button class="quiz-btn" onclick="window.mathQuizCheck(1, this)">Check Answer</button>
 </div>
 
@@ -246,10 +246,10 @@ What is 7 + 8?
 What is 9 x 6?
 
 <div class="quiz-options" id="q2-options">
-  <label class="quiz-option"><input type="radio" name="q2"> 45</label>
-  <label class="quiz-option"><input type="radio" name="q2"> 51</label>
-  <label class="quiz-option"><input type="radio" name="q2" data-correct="true"> 54</label>
-  <label class="quiz-option"><input type="radio" name="q2"> 63</label>
+  <label class="quiz-option"><input type="radio" name="q2"> 45</label><br>
+  <label class="quiz-option"><input type="radio" name="q2"> 51</label><br>
+  <label class="quiz-option"><input type="radio" name="q2" data-correct="true"> 54</label><br>
+  <label class="quiz-option"><input type="radio" name="q2"> 63</label><br>
   <button class="quiz-btn" onclick="window.mathQuizCheck(2, this)">Check Answer</button>
 </div>
 
@@ -260,10 +260,10 @@ What is 9 x 6?
 What is 100 divided by 4?
 
 <div class="quiz-options" id="q3-options">
-  <label class="quiz-option"><input type="radio" name="q3"> 20</label>
-  <label class="quiz-option"><input type="radio" name="q3"> 24</label>
-  <label class="quiz-option"><input type="radio" name="q3"> 30</label>
-  <label class="quiz-option"><input type="radio" name="q3" data-correct="true"> 25</label>
+  <label class="quiz-option"><input type="radio" name="q3"> 20</label><br>
+  <label class="quiz-option"><input type="radio" name="q3"> 24</label><br>
+  <label class="quiz-option"><input type="radio" name="q3"> 30</label><br>
+  <label class="quiz-option"><input type="radio" name="q3" data-correct="true"> 25</label><br>
   <button class="quiz-btn" onclick="window.mathQuizCheck(3, this)">Check Answer</button>
 </div>
 
@@ -302,11 +302,11 @@ if (summary.answeredCount < summary.total) {
   <div class="quiz-field">
     <label for="student-name">Your name:</label>
     <input type="text" id="student-name" placeholder="e.g. Jane Doe">
-  </div>
+  </div><br>
   <div class="quiz-field">
     <label for="teacher-email">Teacher's email:</label>
     <input type="email" id="teacher-email" placeholder="teacher@example.com">
-  </div>
+  </div><br>
   <button class="quiz-btn" onclick="window.mathQuizEmailResults()">Email My Results to My Teacher</button>
 </div>
 
