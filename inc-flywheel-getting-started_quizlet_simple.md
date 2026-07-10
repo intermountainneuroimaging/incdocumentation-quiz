@@ -21,17 +21,18 @@ style:
     flex-direction: column;
     gap: 0.4em;
     margin: 0.75em 0;
+    line-height: 1.2;
   }
   .quiz-option {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.4em 0.6em;
-    border: 2px solid #888;
-    border-radius: 8px;
-    width: fit-content;
+    display: inline-block;
+    padding: 0.15em 0.3em;
+  }
+  .quiz-option input {
+    vertical-align: middle;
+    margin-right: 0.4em;
   }
   .quiz-btn {
+    display: inline-block;
     padding: 0.5em 1em;
     border: 2px solid #888;
     border-radius: 8px;
@@ -41,33 +42,35 @@ style:
   }
   .quiz-options .quiz-btn {
     margin-top: 0.3em;
-    align-self: flex-start;
   }
   .quiz-btn:disabled {
     cursor: default;
     opacity: 0.85;
   }
   .quiz-correct {
-    border-color: #2e7d32 !important;
     background: #c8e6c9 !important;
+    border-radius: 4px;
   }
   .quiz-wrong {
-    border-color: #c62828 !important;
     background: #ffcdd2 !important;
+    border-radius: 4px;
   }
   .quiz-field {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
     margin: 0.4em 0;
   }
+  .quiz-field label {
+    display: inline-block;
+    margin-right: 0.5em;
+    vertical-align: middle;
+  }
   .quiz-field input {
-    flex: 1;
+    vertical-align: middle;
     padding: 0.4em 0.6em;
     border: 2px solid #888;
     border-radius: 8px;
     font-size: 1em;
-    max-width: 320px;
+    width: 250px;
+    max-width: 100%;
   }
   #completion-gate textarea {
     display: block;
