@@ -141,12 +141,9 @@ window.QUIZ_QUESTIONS = [
   { id: "q5",  text: "Is Flywheel data backed up across multiple physical locations?" },
   { id: "q6",  text: "Are users responsible for checking DICOM transfer within 1 week?" },
   { id: "q7",  text: "Correct Accession Number format at the scanner console?" },
-  { id: "q8",  text: "Recommended naming convention for subject/session labels?" },
-  { id: "q9",  text: "Must the Scanner Requisition Form be submitted before each scan?" },
-  { id: "q10", text: "Can users change or update the Flywheel data hierarchy?" },
-  { id: "q11", text: "What identifier should you use to cite INC?" },
-  { id: "q12", text: "Which two collaborators must also be acknowledged?" },
-  { id: "q13", text: "What is INC's RRID number?" }
+  { id: "q8",  text: "Must the Scanner Requisition Form be submitted before each scan?" },
+  { id: "q9",  text: "What identifier should you use to cite INC?" },
+  { id: "q10", text: "Which two collaborators must also be acknowledged?" }
 ];
 
 function quizClearHighlight(container) {
@@ -333,12 +330,6 @@ window.renderCompletionGate = function () {
 
   var summary = window.quizSummary();
 
-  if (summary.answeredCount < summary.total) {
-    el.innerHTML =
-      "<p>You haven't answered all the questions yet. Please scroll back up, answer every question above, and return here.</p>";
-    return;
-  }
-
   if (summary.pct < window.QUIZ_PASSING_PCT) {
     el.innerHTML =
       "<p><strong>You scored " + summary.pct + "%.</strong> A score of at least " + window.QUIZ_PASSING_PCT +
@@ -480,7 +471,7 @@ window.quizEmailResults = function () {
 
 **Flywheel.io** is an imaging data management platform used to receive, curate, manage, and analyze neuroimaging data. INC hosts a **cloud deployment** of Flywheel.io: your imaging data and metadata are stored on **AWS cloud infrastructure (S3)**, while data analysis and computation run on **CU Boulder Research Computing's (CURC)** on-premise HPC clusters, **Blanca** and **Alpine**, backed by **PetaLibrary** storage.
 
-![Flywheel computing architecture at CU Boulder](https://inc-documentation.readthedocs.io/en/latest/_images/facilities_data_analysis.jpg)<!-- style="width: 70%" -->
+![Flywheel computing architecture at CU Boulder](https://inc-documentation.readthedocs.io/en/latest/_images/facilities_data_analysis.jpg)<!-- style="width: 100%; aspect-ratio: 16/6; object-fit: cover; object-position: center; display: block; margin: 0 auto;" -->
 
 > **Note:** Before starting a new or existing study in Flywheel, you must set up a meeting with INC Staff to discuss your specific needs and obtain a copy of INC's **Memorandum of Use (MOU)**.
 
@@ -582,7 +573,7 @@ Once your imaging data is ingested into Flywheel, it is stored on **Amazon S3 (S
 
 ## 2. At the Scanner
 
-<!-- We use automated transfer protocols to send DICOM data collected on the MRI scanner to the Flywheel web instance. Here at INC, we encode the **landing spot** for the DICOM data within two of the DICOM's header fields: `refering physician` and `accession number`. The MRI technician running your scan can help answer questions about how to set these fields to ensure the scanning session's data ends up in the right spot. -->
+We use automated transfer protocols to send DICOM data collected on the MRI scanner to the Flywheel web instance. Here at INC, we encode the **landing spot** for the DICOM data within two of the DICOM's header fields: `refering physician` and `accession number`. The MRI technician running your scan can help answer questions about how to set these fields to ensure the scanning session's data ends up in the right spot.
 
 Here are a few things to keep in mind:
 
@@ -640,10 +631,10 @@ Beyond the `accession number`, a small amount of additional participant/session 
 **Q7:** What is the correct format for the Accession Number field at the scanner console?
 
 <div class="quiz-options" id="q7-options">
-  <label class="quiz-option"><input type="radio" name="q7"> &lt;subject-label&gt; / &lt;session-label&gt;</label><br>
-  <label class="quiz-option"><input type="radio" name="q7"> &lt;group-label&gt; / &lt;project-label&gt;</label><br>
-  <label class="quiz-option"><input type="radio" name="q7" data-correct="true">  &lt;project-label&gt; / &lt;subject-label&gt; / &lt;session-label&gt;</label><br>
-  <label class="quiz-option"><input type="radio" name="q7"> &lt;session-label&gt; / &lt;subject-label&gt; / &lt;project-label&gt;</label><br>
+  <label class="quiz-option"><input type="radio" name="q7"> subject-label / session-label </label><br>
+  <label class="quiz-option"><input type="radio" name="q7"> group-label / project-label </label><br>
+  <label class="quiz-option"><input type="radio" name="q7" data-correct="true">  project-label / subject-label / session-label </label><br>
+  <label class="quiz-option"><input type="radio" name="q7"> session-label / subject-label / project-label </label><br>
   <button class="quiz-btn" onclick="window.quizCheckChoice('q7', this)">Check Answer</button>
 </div>
 
@@ -651,29 +642,15 @@ Beyond the `accession number`, a small amount of additional participant/session 
 
 ---
 
-**Q8:** What naming convention does INC recommend for subject and session labels?
+**Q8:** True or False: The Scanner Requisition Form must be submitted before each scan session.
 
 <div class="quiz-options" id="q8-options">
-  <label class="quiz-option"><input type="radio" name="q8"> Participant's initials followed by date of birth</label><br>
-  <label class="quiz-option"><input type="radio" name="q8"> Sequential numbers with no prefix (e.g. 001, 002)</label><br>
-  <label class="quiz-option"><input type="radio" name="q8" data-correct="true"> BIDS-compliant labels (e.g. sub-101, ses-01)</label><br>
-  <label class="quiz-option"><input type="radio" name="q8"> Free-form text with no restrictions</label><br>
+  <label class="quiz-option"><input type="radio" name="q8" data-correct="true"> True</label><br>
+  <label class="quiz-option"><input type="radio" name="q8"> False</label><br>
   <button class="quiz-btn" onclick="window.quizCheckChoice('q8', this)">Check Answer</button>
 </div>
 
 <p id="feedback-q8"></p>
-
----
-
-**Q9:** True or False: The Scanner Requisition Form must be submitted before each scan session.
-
-<div class="quiz-options" id="q9-options">
-  <label class="quiz-option"><input type="radio" name="q9" data-correct="true"> True</label><br>
-  <label class="quiz-option"><input type="radio" name="q9"> False</label><br>
-  <button class="quiz-btn" onclick="window.quizCheckChoice('q9', this)">Check Answer</button>
-</div>
-
-<p id="feedback-q9"></p>
 
 ---
 
@@ -685,7 +662,7 @@ Once logged into Flywheel, you will see the **Projects page** — your primary h
 
 Flywheel uses **CILogon** to manage access — the same federated-login system used by most academic institutions. CU Boulder users log in with their **University of Colorado credentials** (IdentiKey); external collaborators can log in with an existing CILogon-connected account (e.g. from their home institution or ORCID), or request a CU Boulder Affiliate Account through their UCB collaborator.
 
-![Flywheel landing page](https://inc-documentation.readthedocs.io/en/latest/_images/logging_in_1.png)<!-- style="width: 70%" -->
+![Flywheel landing page](https://inc-documentation.readthedocs.io/en/latest/_images/logging_in_1.png)<!-- style="width: 100%" -->
 
 > **💡 Tip:** Having trouble logging in? Try changing browsers.
 
@@ -717,39 +694,30 @@ All accessible projects appear in the **left-hand ribbon** on the Projects page.
 
 > **⚠️ Can't see your data?** If a session is missing from your project, the most likely cause is an incorrectly entered Accession Number at the scanner — causing data to land in the "Unsorted" project instead.
 
+![Viewing sessions and subjects in Flywheel](https://inc-documentation.readthedocs.io/en/latest/_images/add_users_to_projects_1.png)<!-- style="width: 100%" -->
+
+
 ### Viewing Sessions and Subjects
 
 From within a project, the **Sessions panel** lists all scan sessions sorted by date, with a summary of Subject ID and Session ID.
 
 To switch to a subject-centric view, select the **Subjects icon** within the project.
 
-![Viewing sessions and subjects in Flywheel](https://inc-documentation.readthedocs.io/en/latest/_images/accessing_subjects_and_sessions_1.png)<!-- style="width: 70%" -->
+![Viewing sessions and subjects in Flywheel](https://inc-documentation.readthedocs.io/en/latest/_images/accessing_subjects_and_sessions_1.png)<!-- style="width: 100%" -->
 
 ### Collections and Data Views
 
 **Collections** let you curate and share a subset of sessions across projects — for example, a "Radiologist Review" collection — without duplicating data or granting broader access than intended. **Data Views** let you extract and export metadata (age, sex, acquisition info, and more) across a project for statistical analysis or reporting.
 
-![Flywheel collections panel](https://inc-documentation.readthedocs.io/en/latest/_images/collections_1.png)<!-- style="width: 70%" -->
+![Flywheel collections panel](https://inc-documentation.readthedocs.io/en/latest/_images/collections_1.png)<!-- style="width: 100%" -->
 
 ---
 
 ### 🧠 Check Your Understanding — Navigating the UI
 
-**Q10:** True or False: Users can change or update the Flywheel Database file hierarchy to match the design and use case for their project.
+**Practice Exercise (not scored):** Drag the steps described below in the correct order to detail the approach you would take to navigate to the data from a recently collected MRI session.
 
-<div class="quiz-options" id="q10-options">
-  <label class="quiz-option"><input type="radio" name="q10"> True - Flywheel maintains a flexible file hierarchy for all data storage.</label><br>
-  <label class="quiz-option"><input type="radio" name="q10" data-correct="true"> False - Flywheel maintains a strict file hierarchy (Group → Project → Subject → Session → Acquisition) </label><br>
-  <button class="quiz-btn" onclick="window.quizCheckChoice('q10', this)">Check Answer</button>
-</div>
-
-<p id="feedback-q10"></p>
-
----
-
-**Practice Exercise (not scored):** Drag the items below into the correct order of the Flywheel data hierarchy, from top to bottom.
-
-@dragdroporder(@uid,Session|Group|Acquisition|Project|Subject,Group|Project|Subject|Session|Acquisition)
+@dragdroporder(@uid,Check Subject and Session labeling is correct|Navigate to the Sessions Tab|Login using CILogon|Select the session by timestamp|Select your project from the Projects Page,Login using CILogon|Select your project from the Projects Page|Navigate to the Sessions Tab|Select the session by timestamp|Check Subject and Session labeling is correct)
 
 ---
 
@@ -766,7 +734,7 @@ If INC's Flywheel platform has contributed to your publication, you are required
 **Also acknowledge the following collaborators:**
 
 - **CU Boulder Research Computing (CURC)** — the infrastructure on which Flywheel is deployed
-- **Flywheel.io** — without whose continued support this platform would not be possible
+- **Analytic Pipeline Authors** — if you are using any open source analytic pipelines be sure to check the original author's citation requirements before publishing (e.g. fmriprep).
 
 > **📬 Getting started?** Contact INC to request a copy of the Memorandum of Use and set up a one-on-one consultation.
 
@@ -774,44 +742,31 @@ If INC's Flywheel platform has contributed to your publication, you are required
 
 ### 🧠 Check Your Understanding — How to Cite Us
 
-**Q11:** What identifier should you use to cite INC in a publication?
+**Q9:** What identifier should you use to cite INC in a publication?
 
-<div class="quiz-options" id="q11-options">
-  <label class="quiz-option"><input type="radio" name="q11"> A DOI assigned per study</label><br>
-  <label class="quiz-option"><input type="radio" name="q11"> The PI's ORCID number</label><br>
-  <label class="quiz-option"><input type="radio" name="q11" data-correct="true"> INC's Research Resource Identifier (RRID): SCR_025079</label><br>
-  <label class="quiz-option"><input type="radio" name="q11"> A URL to the INC website</label><br>
-  <button class="quiz-btn" onclick="window.quizCheckChoice('q11', this)">Check Answer</button>
+<div class="quiz-options" id="q9-options">
+  <label class="quiz-option"><input type="radio" name="q9"> A DOI assigned per study</label><br>
+  <label class="quiz-option"><input type="radio" name="q9"> The PI's ORCID number</label><br>
+  <label class="quiz-option"><input type="radio" name="q9" data-correct="true"> INC's Research Resource Identifier (RRID): SCR_025079</label><br>
+  <label class="quiz-option"><input type="radio" name="q9"> A URL to the INC website</label><br>
+  <button class="quiz-btn" onclick="window.quizCheckChoice('q9', this)">Check Answer</button>
 </div>
 
-<p id="feedback-q11"></p>
+<p id="feedback-q9"></p>
 
 ---
 
-**Q12:** Which TWO collaborators must also be acknowledged alongside INC? Select all that apply.
+**Q10:** When publishing using a dataset collected or analyzed at INC, which CU Boulder entities must also be acknowledged? Select all that apply.
 
-<div class="quiz-options" id="q12-options">
-  <label class="quiz-option"><input type="checkbox" name="q12" data-correct="true"> CU Boulder Research Computing (CURC)</label><br>
-  <label class="quiz-option"><input type="checkbox" name="q12" data-correct="true"> Flywheel.io</label><br>
-  <label class="quiz-option"><input type="checkbox" name="q12"> Amazon Web Services</label><br>
-  <label class="quiz-option"><input type="checkbox" name="q12"> CU Anschutz Medical Campus</label><br>
-  <button class="quiz-btn" onclick="window.quizCheckMulti('q12', this)">Check Answer</button>
+<div class="quiz-options" id="q10-options">
+  <label class="quiz-option"><input type="checkbox" name="q10" data-correct="true"> Intermountain Neuroimaging Center (INC)</label><br>
+  <label class="quiz-option"><input type="checkbox" name="q10" data-correct="true"> CU Boulder Research Computing (CURC)</label><br>
+  <label class="quiz-option"><input type="checkbox" name="q10"> Amazon Web Services</label><br>
+  <label class="quiz-option"><input type="checkbox" name="q10"> CU Anschutz Medical Campus</label><br>
+  <button class="quiz-btn" onclick="window.quizCheckMulti('q10', this)">Check Answer</button>
 </div>
 
-<p id="feedback-q12"></p>
-
----
-
-**Q13:** What is INC's RRID number?
-
-<div class="quiz-options">
-  <div class="quiz-field">
-    <input type="text" id="q13-input" data-accepted='["scr_025079"]' placeholder="Type your answer">
-  </div><br>
-  <button class="quiz-btn" onclick="window.quizCheckText('q13', this)">Check Answer</button>
-</div>
-
-<p id="feedback-q13"></p>
+<p id="feedback-q10"></p>
 
 ---
 
@@ -823,7 +778,7 @@ As a thank-you for participating in research, INC generates **"brain souvenir"**
 
 Electronic brain souvenirs are generated **automatically for all study participants** — no gear needs to be manually launched. Lab staff should access and download the souvenir from the **list of session analyses** for that participant's session.
 
-![Example electronic brain souvenir — sagittal MRI slice](https://inc-documentation.readthedocs.io/en/latest/_images/brain_souvenir_example.jpg)<!-- style="width: 70%" -->
+![Example electronic brain souvenir — sagittal MRI slice](https://inc-documentation.readthedocs.io/en/latest/_images/brain_souvenir_example.jpg)<!-- style="width: 50%; display: block; margin: 0 auto;" -->
 
 > **📤 Sharing with participants:** Flywheel does not email or share the souvenir on your behalf. Communicate with the participant **directly** about how you'll share their electronic souvenir with them — check with your IRB coordinator about appropriate sharing methods.
 
@@ -831,7 +786,7 @@ Electronic brain souvenirs are generated **automatically for all study participa
 
 Looking for something more lasting? INC also offers **3D printed brain souvenirs**, which can be picked up within **2 weeks** of the scan.
 
-![Example 3D-printed human brain model (NIH 3D Print Exchange, public domain, credit: Nevit Dilmen / NIH)](https://live.staticflickr.com/1470/26680098405_89bacae881.jpg)<!-- style="width: 50%" -->
+![Example 3D-printed human brain model (NIH 3D Print Exchange, public domain, credit: Nevit Dilmen / NIH)](https://live.staticflickr.com/1470/26680098405_89bacae881.jpg)<!-- style="width: 50%; display: block; margin: 0 auto;" -->
 
 > **📝 Requesting a 3D print:** Interest in a 3D printed souvenir should be noted on the **Scanner Requisition Form** at the time of scheduling.
 
@@ -856,11 +811,6 @@ lines.push("");
 lines.push("**Score:** " + summary.correctCount + " / " + summary.total + " (" + summary.pct + "%)");
 lines.push("");
 lines.push("**Grade: " + summary.grade + "**");
-
-if (summary.answeredCount < summary.total) {
-  lines.push("");
-  lines.push("_Go back and answer all questions above to see your final grade._");
-}
 
 "LIASCRIPT: " + lines.join("\n")
 </script>
